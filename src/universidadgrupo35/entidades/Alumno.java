@@ -1,39 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo35.entidades;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author Hp
- */
+
 public class Alumno {
  private int idAlumno;
+ private int dni;
  private String apellido;
  private String nombre;
  private LocalDate fechaNacimiento;
- private boolean activo;
+ private boolean estado;
 
     public Alumno() {
     }
 
-    public Alumno(String apellido, String nombre, LocalDate fechaNacimiento, boolean activo) {
+    public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+        this.dni= dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.activo = activo;
+        this.estado = estado;
     }
 
-    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNacimiento, boolean activo) {
+    public Alumno(int idAlumno, int dni,String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
         this.idAlumno = idAlumno;
+         this.dni= dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.activo = activo;
+        this.estado =estado;
     }
 
     public int getIdAlumno() {
@@ -44,6 +40,16 @@ public class Alumno {
         this.idAlumno = idAlumno;
     }
 
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    
+    
     public String getApellido() {
         return apellido;
     }
@@ -68,17 +74,17 @@ public class Alumno {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", activo=" + activo + '}';
+        return "Alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", estado=" + estado + '}';
     }
  
  
