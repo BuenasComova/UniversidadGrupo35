@@ -54,7 +54,7 @@ public class AlumnoData {
 
     public void modificarAlumno(Alumno alumno) {
 
-        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?"
+        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?, "
                 + "WHERE idAlumno= ?";
 
         try {
@@ -70,8 +70,11 @@ public class AlumnoData {
             if (modif == 1) {
                 JOptionPane.showMessageDialog(null, "Datos de alumno actualizados");
 
-            }
-
+            } else {
+                JOptionPane.showMessageDialog(null, " Alumno inexistente");}
+           
+            ps.close();
+                    
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a tabla alumno");
         }
@@ -88,6 +91,7 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Alumno eliminado");
 
             }
+             ps.close();
 
         } catch (SQLException ex) {
 

@@ -14,7 +14,7 @@ public class Materia {
     private int idMateria;
     private String nombre;
     private int anio;
-    private boolean activo;
+    private boolean estado;
 
     public Materia() {
     }
@@ -22,14 +22,14 @@ public class Materia {
     public Materia(String nombre, int anio, boolean activo) {
         this.nombre = nombre;
         this.anio = anio;
-        this.activo = activo;
+        this.estado = activo;
     }
 
     public Materia(int idMateria, String nombre, int anio, boolean activo) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.anio = anio;
-        this.activo = activo;
+        this.estado = activo;
     }
 
     public int getIdMateria() {
@@ -56,12 +56,12 @@ public class Materia {
         this.anio = anio;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
