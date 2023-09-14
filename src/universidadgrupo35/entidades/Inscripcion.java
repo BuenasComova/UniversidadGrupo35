@@ -9,22 +9,22 @@ package universidadgrupo35.entidades;
  *
  * @author Hp
  */
-public class inscripcion {
+public class Inscripcion {
     private int idInscripcion;
     private Alumno alumno;
     private Materia materia;
     private double nota;
 
-    public inscripcion() {
+    public Inscripcion() {
     }
 
-    public inscripcion(Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
     }
 
-    public inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
