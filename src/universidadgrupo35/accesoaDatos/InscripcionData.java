@@ -9,11 +9,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
+import universidadgrupo35.entidades.Alumno;
 import universidadgrupo35.entidades.Inscripcion;
+import universidadgrupo35.entidades.Materia;
 
 /**
  *
@@ -21,7 +25,11 @@ import universidadgrupo35.entidades.Inscripcion;
  */
 public class InscripcionData {
  private Connection con = null;
-
+ 
+ private MateriaData md = new MateriaData ();
+ 
+ private AlumnoData ad = new AlumnoData ();
+ 
     public InscripcionData() {
         this.con= Conexion.getConexion();
         
@@ -59,7 +67,7 @@ public class InscripcionData {
      
  }
      
-     public void actualizaNota(int idAlumno, int idMateria, double nota){
+     public void actualizarNota(int idAlumno, int idMateria, double nota){
          
          String sql="update inscripcion set nota= ? where idAlumno=? and idMateria=?";
          
@@ -93,7 +101,7 @@ public class InscripcionData {
          
          
      }
-     } 
+     } // Hacemos el borrado logico o el fisico????
        public void borrarInscripcionMateriaAlumno (int idAlumno,int idMateria) {
            
            String sql=" Delete from inscripcion where idAlumno=? and idMateria=?";
@@ -125,7 +133,54 @@ public class InscripcionData {
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
             }     
            
-       }}
+       }
+     public List<Inscripcion> obtenerInscripciones(){
+     ArrayList<Inscripcion> cursadas= new ArrayList <> ();
+     
+     String sql="select * from inscripcion ";
+     try {
+         //habilitamos conexion a bd
+         PreparedStatement ps= con.prepareStatement(sql);
+         //preparamos la sentencia a enviar
+         ResultSet rs=ps.executeQuery();
+         //ResulSet contiene los resultados de la consulta a bd
+         //guardamos el resultado de nuestra consulta enviada a traves de la ejecucion de la sentecia sql
+         //en la variable rs.
+         
+         while (rs.next()){ // mientras haya filas en rs  ejecuto el while  
+             Inscripcion insc = new Inscripcion ();
+             // creo un objeto inscripcion
+             insc.setIdInscripcion(rs.getInt("idInscripcion"));
+            // relleno el objeto inscripcion con los campos que me suministra la variable rs
+             Alumno alu = ad.buscarAlumno(rs.getInt("idAlumno"));
+             
+             Materia mat = md.buscarMateria(rs.getInt("idMateria"));
+             
+             
+               insc.setAlumno(alu);
+               
+               insc.setMateria(mat);
+               
+               insc.setNota(rs.getDouble("nota"));
+               
+              cursadas.add(insc);
+              
+              //agrego el objeto inscripcion a la lista cursadas
+            
+             
+         
+         }
+         
+         ps.close();// cierro la conexion a la base de datos
+     } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "Error de conexion a tabla inscripcion");
+     }
+     
+     return cursadas;}
+     // retorno la lista cursadas
+}
+     
+
          
          
      
