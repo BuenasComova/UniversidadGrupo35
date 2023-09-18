@@ -222,7 +222,7 @@ public class InscripcionData {
      ArrayList <Materia> materias= new ArrayList();
      // sentencia para enviar
      
-     String sql= "SELECT inscripciones.idMateria,nombre, año From inscripcion, materia WHERE inscripciones.idMateria= materia.idMateria AND inscripcion.idAlumno=?;";
+     String sql= "SELECT inscripcion.idMateria,nombre, año From inscripcion, materia WHERE inscripcion.idMateria= materia.idMateria AND inscripcion.idAlumno=?;";
      //aca hace un producto cartesiano con todas las posibles combinaciones entre inscripción y materia pero que solo devuelva donde coincidan los id 
      try {
           //habilitamos conexion a bd
