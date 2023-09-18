@@ -16,6 +16,7 @@ public class MateriaView extends javax.swing.JInternalFrame {
      */
     public MateriaView() {
         initComponents();
+        
     }
 
     /**
