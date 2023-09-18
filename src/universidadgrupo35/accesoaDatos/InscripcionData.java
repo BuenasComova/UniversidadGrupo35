@@ -216,7 +216,39 @@ public class InscripcionData {
      }
      
      
+      //Obtengo las materias cursadas por el alumno
+     public List <Materia>obtenerMateriasCursadas (int idAlumno){
+         //creo un arrayList para guardar las materias
+     ArrayList <Materia> materias= new ArrayList();
+     // sentencia para enviar
      
+     String sql= "SELECT inscripciones.idMateria,nombre, año From inscripcion, materia WHERE inscripciones.idMateria= materia.idMateria AND inscripcion.idAlumno=?;";
+     //aca hace un producto cartesiano con todas las posibles combinaciones entre inscripción y materia pero que solo devuelva donde coincidan los id 
+     try {
+          //habilitamos conexion a bd
+         PreparedStatement ps=con.prepareStatement(sql);
+         //seteamos la incognita con el id que nos pasan por parámetro
+         ps.setInt(1, idAlumno);
+          //preparamos la sentencia a enviar
+         ResultSet rs= ps.executeQuery();
+         
+        while (rs.next()) {
+            //mientras haya filas se recorren con el while
+            //se crea un objeto materia con contructor vacio
+            Materia materia= new Materia();
+            //se rellena 
+            materia.setIdMateria(rs.getInt("idMateria"));
+            materia.setNombre(rs.getString("nombre"));
+            materia.setAnio(rs.getInt("año"));
+            materias.add(materia);
+        }
+        //se cierra la conexion
+         ps.close();
+     } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+     }
+     return materias;
+}
      
      
      
