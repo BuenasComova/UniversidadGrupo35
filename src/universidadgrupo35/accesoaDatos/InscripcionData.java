@@ -250,16 +250,94 @@ public class InscripcionData {
      return materias;
 }
      
+      //Obtengo las materias no cursadas por el alumno
+     public List <Materia>obtenerMateriasNoCursadas (int idAlumno){
+       ArrayList <Materia> materias= new ArrayList();  
+         String sql= "SELECT * FROM materia WHERE estado = 1 AND idmateria not in"
+                 + "(SELECT idmateria FROM inscripcion WHERE idAlumno =?)";         
+         
+          try {
+          //habilitamos conexion a bd
+         PreparedStatement ps=con.prepareStatement(sql);
+         //seteamos la incognita con el id que nos pasan por parámetro
+         ps.setInt(1, idAlumno);
+          //preparamos la sentencia a enviar
+         ResultSet rs= ps.executeQuery();
+         
+        while (rs.next()) {
+            //mientras haya filas se recorren con el while
+            //se crea un objeto materia con contructor vacio
+            Materia materia= new Materia();
+            //se rellena 
+            materia.setIdMateria(rs.getInt("idMateria"));
+            materia.setNombre(rs.getString("nombre"));
+            materia.setAnio(rs.getInt("año"));
+            materias.add(materia);
+        }
+        //se cierra la conexion
+         ps.close();
+     } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+     }
+            return materias;
+     }
      
      
+     public List<Alumno> obtenerAlumnoPorMateria ( int idMateria) {
+         
+      ArrayList<Alumno> alus = new ArrayList<> ();
+      
+       String sql = "select alumno.idalumno,dni,nombre,apellido,fechaDeNacimiento,estado "
+               + "from inscripcion,alumno where inscripcion.idAlumno=alumno.idaAlumno and idMateria=?and alumno.estado=1";
+               
+     try {
+         
+         PreparedStatement ps=con.prepareStatement(sql);
+         
+         ps.setInt(1, idMateria);
+                 
+         ResultSet rs = ps.executeQuery();
+         
+         while(rs.next()){
+             
+          Alumno alu=new Alumno ();
+           
+           
+           alu.setIdAlumno(rs.getInt("idAlumno"));
+           
+           alu.setDni(rs.getInt("dni"));
+           
+           alu.setNombre(rs.getString ("nombre"));
+           
+           alu.setApellido(rs.getString("apellido"));
+           
+           alu.setFechaNacimiento(rs.getDate ("fechaNacimiento").toLocalDate());
+       
+                   
+            alu.setEstado(rs.getBoolean("estado"));
+            
+            
+            alus.add(alu);
+            
+         }
+        
+         
+         ps.close();
+         
+     } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "error de conexion a la tabla ");
+     }
+                        
+                          
+       return   alus;
+     }
      
      
-     
-     
+      
 }
      
+     
 
          
          
      
-
