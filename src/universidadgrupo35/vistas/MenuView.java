@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo35.vistas;
+
+import universidadgrupo35.accesoaDatos.AlumnoData;
 
 /**
  *
- * @author usuario
+ * @author grupo35
  */
-public class PrimeraVista extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PrimeraVista
-     */
-    public PrimeraVista() {
+public class MenuView extends javax.swing.JFrame {
+    private AlumnoData ad;
+    
+    public MenuView() {
         initComponents();
+        ad = new AlumnoData(); // instancio ad
     }
 
     /**
@@ -27,7 +24,7 @@ public class PrimeraVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMalumno = new javax.swing.JMenu();
         jMformAlumno = new javax.swing.JMenuItem();
@@ -43,21 +40,21 @@ public class PrimeraVista extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jDesktopPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jDesktopPane2.setForeground(new java.awt.Color(102, 102, 0));
+        escritorio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        escritorio.setForeground(new java.awt.Color(102, 102, 0));
 
-        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
-        jDesktopPane2.setLayout(jDesktopPane2Layout);
-        jDesktopPane2Layout.setHorizontalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 396, Short.MAX_VALUE)
         );
-        jDesktopPane2Layout.setVerticalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 289, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jDesktopPane2);
+        getContentPane().add(escritorio);
 
         jMalumno.setText("Alumno");
 
@@ -122,7 +119,12 @@ public class PrimeraVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jMcalificacionesActionPerformed
 
     private void jMformAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformAlumnoActionPerformed
-        // TODO add your handling code here:
+       escritorio.removeAll();
+       escritorio.repaint();
+       AlumnoView avw = new AlumnoView(ad); // instancio objeto de clase AlumnoView
+       avw.setVisible(true);
+       escritorio.add(avw);
+       escritorio.moveToFront(avw);
     }//GEN-LAST:event_jMformAlumnoActionPerformed
 
     /**
@@ -142,27 +144,29 @@ public class PrimeraVista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrimeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrimeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrimeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrimeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrimeraVista().setVisible(true);
+                new MenuView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMadministracion;
     private javax.swing.JMenuItem jMaluPorMat;
     private javax.swing.JMenu jMalumno;

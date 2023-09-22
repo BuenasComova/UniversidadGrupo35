@@ -5,18 +5,24 @@
  */
 package universidadgrupo35.vistas;
 
+import java.time.ZoneId;
+import universidadgrupo35.accesoaDatos.AlumnoData;
+import universidadgrupo35.entidades.Alumno;
+
 /**
  *
- * @author usuario
+ * @author grupo 35
  */
 public class AlumnoView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AlumnosView
-     */
-    public AlumnoView() {
+    private AlumnoData ad;
+    
+    public AlumnoView(AlumnoData ad) {
         initComponents();
+        this.ad = ad;
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,16 +39,16 @@ public class AlumnoView extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jRestado = new javax.swing.JRadioButton();
         jTdni = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
-        jBnuevo = new javax.swing.JButton();
+        jDfechaNacimiento = new com.toedter.calendar.JDateChooser();
+        jRestado = new javax.swing.JRadioButton();
         jBguardar = new javax.swing.JButton();
+        jBactualizar = new javax.swing.JButton();
         jBeliminar = new javax.swing.JButton();
-        jBsalir = new javax.swing.JButton();
         jBbuscar = new javax.swing.JButton();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jBsalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
         jLabel1.setText("DATOS DEL ALUMNO");
@@ -63,20 +69,25 @@ public class AlumnoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jBnuevo.setText("Nuevo");
-
         jBguardar.setText("Guardar");
+
+        jBactualizar.setText("Actualizar");
+        jBactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBactualizarActionPerformed(evt);
+            }
+        });
 
         jBeliminar.setText("Eliminar");
 
-        jBsalir.setText("Salir");
-
-        jBbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo35/vistas/icono lupa.png"))); // NOI18N
+        jBbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono lupa.png"))); // NOI18N
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbuscarActionPerformed(evt);
             }
         });
+
+        jBsalir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,9 +99,9 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBnuevo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBguardar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBactualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBeliminar))
                             .addComponent(jLabel4)
@@ -104,7 +115,7 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(26, 26, 26)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jDfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
@@ -149,7 +160,7 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                                 .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(38, 38, 38)
                         .addComponent(jLabel5))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDfechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,8 +176,8 @@ public class AlumnoView extends javax.swing.JInternalFrame {
                                 .addComponent(jRestado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBnuevo)
                     .addComponent(jBguardar)
+                    .addComponent(jBactualizar)
                     .addComponent(jBeliminar))
                 .addGap(18, 18, 18)
                 .addComponent(jBsalir)
@@ -184,14 +195,23 @@ public class AlumnoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRestadoActionPerformed
 
+    private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
+        ad.modificarAlumno(new Alumno(Integer.parseInt(jTdni.getText()), jTapellido.getText(), jTnombre.getText(), jDfechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jRestado.isSelected()));
+        jTdni.setText("");
+        jTapellido.setText("");
+        jTnombre.setText("");
+        jRestado.setSelected(false);
+        jDfechaNacimiento.setDate(null); 
+    }//GEN-LAST:event_jBactualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBactualizar;
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
     private javax.swing.JButton jBguardar;
-    private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDfechaNacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
