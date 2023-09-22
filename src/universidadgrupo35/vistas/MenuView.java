@@ -69,8 +69,18 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar1.add(jMalumno);
 
         jMmateria.setText("Materia");
+        jMmateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMmateriaActionPerformed(evt);
+            }
+        });
 
         jMformMateria.setText("Form Materia");
+        jMformMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMformMateriaActionPerformed(evt);
+            }
+        });
         jMmateria.add(jMformMateria);
 
         jMenuBar1.add(jMmateria);
@@ -78,6 +88,11 @@ public class MenuView extends javax.swing.JFrame {
         jMadministracion.setText("Administracion");
 
         jMformInscripcion.setText("Form Inscripcion");
+        jMformInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMformInscripcionActionPerformed(evt);
+            }
+        });
         jMadministracion.add(jMformInscripcion);
 
         jMcalificaciones.setText("Calificaciones");
@@ -103,6 +118,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar1.add(jMconsultas);
 
         jMsalir.setText("Salir");
+        jMsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMsalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMsalir);
 
         setJMenuBar(jMenuBar1);
@@ -126,6 +146,22 @@ public class MenuView extends javax.swing.JFrame {
        escritorio.add(avw);
        escritorio.moveToFront(avw);
     }//GEN-LAST:event_jMformAlumnoActionPerformed
+
+    private void jMmateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMmateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMmateriaActionPerformed
+
+    private void jMformMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformMateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMformMateriaActionPerformed
+
+    private void jMformInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformInscripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMformInscripcionActionPerformed
+
+    private void jMsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMsalirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMsalirMouseClicked
 
     /**
      * @param args the command line arguments
