@@ -101,10 +101,11 @@ public class InscripcionData {
          
          
      }
-     } // Hacemos el borrado logico o el fisico????
+     } // Hacemos el borrado logico
        public void borrarInscripcionMateriaAlumno (int idAlumno,int idMateria) {
+          String sql="UPDATE inscripcion SET estado=0 where idAlumno=? and idMateria=?";
            
-           String sql=" Delete from inscripcion where idAlumno=? and idMateria=?";
+//String sql=" update from inscripcion where idAlumno=? and idMateria=?";
            
            PreparedStatement ps;
      try {
@@ -163,7 +164,11 @@ public class InscripcionData {
                
                insc.setNota(rs.getDouble("nota"));
                
+               insc.setEstado(rs.getBoolean("estado"));
+               
               cursadas.add(insc);
+              
+              
               
               //agrego el objeto inscripcion a la lista cursadas
             

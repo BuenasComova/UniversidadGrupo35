@@ -14,21 +14,24 @@ public class Inscripcion {
     private Alumno alumno;
     private Materia materia;
     private double nota;
+    private boolean estado;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(Alumno alumno, Materia materia, double nota, boolean estado) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
+        this.estado= estado;
     }
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota,boolean estado) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
+        this.estado= estado;
     }
 
     public int getIdInscripcion() {
@@ -63,9 +66,19 @@ public class Inscripcion {
         this.nota = nota;
     }
 
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+    
+    
+
     @Override
     public String toString() {
-        String insc = idInscripcion+" "+alumno.getApellido()+", "+alumno.getNombre()+" "+materia.getNombre();
+        String insc = idInscripcion+" "+alumno.getApellido()+", "+alumno.getNombre()+", "+materia.getNombre();
         return insc;
     }
     
