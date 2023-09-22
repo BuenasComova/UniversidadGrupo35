@@ -19,30 +19,47 @@ public class UniversidadGrupo35 {
         MateriaData mate = new MateriaData();
         InscripcionData id = new InscripcionData();
 
-        //Alumno juan;
-        //juan = new Alumno(24558895, "Sanchez","maria",LocalDate.of(2009,12,24),true); 
+        //Alumno aaa;
+        //aaa = new Alumno(24558895, "Sanchez","maria",LocalDate.of(2001,12,24),true); 
+        //alu.guardarAlumno(aaa);
         
-        //Alumno alumnoEncontrado=alu.buscarAlumno(1);
-        //      System.out.println("dni " +alumnoEncontrado.getDni() +"nombre "+alumnoEncontrado.getNombre() +"apellido "+alumnoEncontrado.getApellido());
-        //alu.guardarAlumno(juan);
-        //alu.listarAlumnos(maria);
-        //alu.buscarAlumno(1);
-        //alu.eliminarAlumno(0);
-        //      System.out.println("dni, apellido, nombre, "+Alumno);
+        //Alumno bbb;
+        //aaa = new Alumno(12345678, "Martinez","Jorge",LocalDate.of(2000,02,06),true); 
+        //alu.guardarAlumno(bbb);
+        
+        //Alumno ccc;
+        //ccc = new Alumno(56789123, "Flores","Sandra",LocalDate.of(1990,08,10),true); 
+        //alu.guardarAlumno(bbb);
         
         
-        //alu.eliminarAlumno(1);
+        //alu.buscarAlumno();
+        //      System.out.println("");
+        
+        
+        //alu.modificarAlumno();   //no se puede probar desde main sin vista
+        
+        
+        
+        //alu.eliminarAlumno();
+        
+        //alu.buscarAlumno();
+         
+        //Buscar alumno por dni
+        //alu.buscarAlumnoPorDni(24558895);
+        //  if(alumnoEncontrado!=null){
+        //      System.out.println(" dni " +alumnoEncontrado.getDni());
+        //	System.out.println(" apellido " +alumnoEncontrado.getApellido());
+        //}
+         
+         //alu.buscarAlumnoPorDni(111111111);
+        
+        //alu.listarAlumnos();
         //  for(Alumno alumno:alu.listarAlumnos()){
         //      System.out.println(" dni: " +alumno.getDni() +" nombre: "+alumno.getNombre() +" apellido: "+alumno.getApellido());  
         //}
         
         
-        //Buscar alumno por dni
-        //Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(24558895);
-        //  if(alumnoEncontrado!=null){
-        //      System.out.println(" dni " +alumnoEncontrado.getDni());
-        //	System.out.println(" apellido " +alumnoEncontrado.getApellido());
-        //}
+        
         
 
         //listar alumno            
@@ -85,9 +102,7 @@ public class UniversidadGrupo35 {
 
 	}
 
-    private static Iterable<Alumno> listarAlumnos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     }
   
