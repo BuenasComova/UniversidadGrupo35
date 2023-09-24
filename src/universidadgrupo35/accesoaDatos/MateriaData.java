@@ -30,7 +30,7 @@ public class MateriaData {
 
     public void guardarMateria(Materia materia) {
 
-        String sql = "INSERT INTO materia (nombre, año)"
+        String sql = "INSERT INTO materia (nombre, año,estado) "
                 + "VALUES (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //devuelve lista claves generadas
@@ -60,7 +60,7 @@ public class MateriaData {
 
     public void modificarMateria(Materia materia) {
 
-        String sql = "UPDATE materia SET nombre=?, año=?"
+        String sql = "UPDATE materia SET nombre=?, año=? "
                 + "WHERE idMateria= ?";
 
         try {

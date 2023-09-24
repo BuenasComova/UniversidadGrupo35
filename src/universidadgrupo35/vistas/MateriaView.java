@@ -5,18 +5,22 @@
  */
 package universidadgrupo35.vistas;
 
+import javax.swing.JOptionPane;
+import universidadgrupo35.accesoaDatos.MateriaData;
+import universidadgrupo35.entidades.Materia;
+
 /**
  *
  * @author usuario
  */
 public class MateriaView extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form MateriaView
-     */
+    MateriaData md = new MateriaData();
+    Materia materiaActual = null;
+
     public MateriaView() {
         initComponents();
-        
+
     }
 
     /**
@@ -61,14 +65,39 @@ public class MateriaView extends javax.swing.JInternalFrame {
         });
 
         jBnueva.setText("Nueva");
+        jBnueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnuevaActionPerformed(evt);
+            }
+        });
 
         jBguardar.setText("Guardar");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
 
         jBeliminar.setText("Eliminar");
+        jBeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeliminarActionPerformed(evt);
+            }
+        });
 
         jBbuscar.setText("Buscar");
+        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarActionPerformed(evt);
+            }
+        });
 
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,42 +105,37 @@ public class MateriaView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)))
+                        .addGap(27, 27, 27)
+                        .addComponent(jRestado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBnueva)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBguardar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRestado)
-                            .addComponent(jTanio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jBguardar)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jBeliminar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBsalir)
-                            .addComponent(jBbuscar))
-                        .addGap(47, 47, 47))))
+                        .addComponent(jBeliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBsalir))
+                    .addComponent(jBbuscar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(47, 47, 47))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))))
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTanio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTcodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,31 +145,30 @@ public class MateriaView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(40, 40, 40)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(69, 69, 69))
+                            .addComponent(jTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBbuscar))
+                        .addGap(67, 67, 67))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTanio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jRestado)
-                    .addComponent(jBbuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                    .addComponent(jRestado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnueva)
                     .addComponent(jBguardar)
-                    .addComponent(jBeliminar))
-                .addGap(18, 18, 18)
-                .addComponent(jBsalir)
-                .addGap(29, 29, 29))
+                    .addComponent(jBeliminar)
+                    .addComponent(jBsalir))
+                .addGap(70, 70, 70))
         );
 
         pack();
@@ -154,6 +177,71 @@ public class MateriaView extends javax.swing.JInternalFrame {
     private void jRestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRestadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRestadoActionPerformed
+
+    private void jBnuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevaActionPerformed
+        limpiarCampos();
+        materiaActual = null;        // TODO add your handling code here:
+    }//GEN-LAST:event_jBnuevaActionPerformed
+
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+ try {
+
+            String nombre = jTnombre.getText();
+            int anio = Integer.parseInt(jTanio.getText());
+       if (nombre.isEmpty()||anio<1){
+           JOptionPane.showMessageDialog(this,"no puede haber campos vacíos");
+           return;
+       }
+     boolean estado = jRestado.isSelected();
+     
+          if (materiaActual==null){
+materiaActual= new Materia(nombre,anio,estado);
+            md.guardarMateria(materiaActual);
+            
+          } else {
+              materiaActual.setNombre(nombre);
+              materiaActual.setAnio(anio);
+              materiaActual.isEstado();
+              md.modificarMateria(materiaActual);
+              
+          }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Se ha ingresado un dato incorrecto, intente nuevamente");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+ try {
+            int codigo = Integer.parseInt(jTcodigo.getText());
+            materiaActual = md.buscarMateria(codigo);
+            if (materiaActual != null) {
+
+                jTnombre.setText(materiaActual.getNombre());
+                String anio = Integer.toString(materiaActual.getAnio());
+                jTanio.setText(anio);
+                jRestado.setSelected(materiaActual.isEstado());
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Se ha ingresado un dato incorrecto, intente nuevamente");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBbuscarActionPerformed
+
+    private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
+ if (null==materiaActual){
+           JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado");
+       } else {
+           md.eliminarMateria(materiaActual.getIdMateria());
+           materiaActual=null;
+           limpiarCampos();
+           
+       }
+               // TODO add your handling code here:
+    }//GEN-LAST:event_jBeliminarActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+   dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBsalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -172,4 +260,11 @@ public class MateriaView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTcodigo;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
+private void limpiarCampos() {
+        jTcodigo.setText("");
+        jTnombre.setText("");
+        jTanio.setText("");
+        jRestado.setSelected(true);
+    }
+
 }

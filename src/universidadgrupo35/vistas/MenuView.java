@@ -152,7 +152,12 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMmateriaActionPerformed
 
     private void jMformMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformMateriaActionPerformed
-        // TODO add your handling code here:
+    escritorio.removeAll();
+       escritorio.repaint();
+       MateriaView mvw = new MateriaView(); // instancio objeto de clase AlumnoView
+       mvw.setVisible(true);
+       escritorio.add(mvw);
+       escritorio.moveToFront(mvw);        // TODO add your handling code here:
     }//GEN-LAST:event_jMformMateriaActionPerformed
 
     private void jMformInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformInscripcionActionPerformed

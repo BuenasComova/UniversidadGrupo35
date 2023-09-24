@@ -19,17 +19,17 @@ public class Materia {
     public Materia() {
     }
 
-    public Materia(String nombre, int anio, boolean activo) {
+    public Materia(String nombre, int anio, boolean estado) {
         this.nombre = nombre;
         this.anio = anio;
-        this.estado = activo;
+        this.estado = estado;
     }
 
-    public Materia(int idMateria, String nombre, int anio, boolean activo) {
+    public Materia(int idMateria, String nombre, int anio, boolean estado) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.anio = anio;
-        this.estado = activo;
+        this.estado = estado;
     }
 
     public int getIdMateria() {
