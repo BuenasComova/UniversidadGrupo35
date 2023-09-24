@@ -127,7 +127,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -160,7 +160,7 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jBbuscar" min="-2" max="-2" attributes="0"/>
+              <Component id="jBbuscar" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBeliminar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -240,7 +240,7 @@
     <Component class="javax.swing.JButton" name="jBbuscar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/universidadejemplo/vistas/icono lupa.png"/>
+          <Image iconType="3" name="/imagenes/icono lupa.png"/>
         </Property>
       </Properties>
       <Events>
