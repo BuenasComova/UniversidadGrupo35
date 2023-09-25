@@ -161,7 +161,14 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMformMateriaActionPerformed
 
     private void jMformInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformInscripcionActionPerformed
-        // TODO add your handling code here:
+escritorio.removeAll(); 
+escritorio.repaint();
+InscripcionView ivw =
+        new InscripcionView();
+ivw.setVisible(true);
+escritorio.add(ivw);
+    
+  //tODO add your handling code here:
     }//GEN-LAST:event_jMformInscripcionActionPerformed
 
     private void jMsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMsalirMouseClicked

@@ -273,7 +273,7 @@ dispose();        // TODO add your handling code here:
 
     private void jRBMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoInscriptasActionPerformed
 borrarFilaTabla();
-jRBMateriasInscriptas.setEnabled(false);
+jRBMateriasInscriptas.setSelected(false);
 cargarDatosNoInscriptas();
 jBAnularInscripcion.setEnabled(false);
 jBInscribir.setEnabled(true);
