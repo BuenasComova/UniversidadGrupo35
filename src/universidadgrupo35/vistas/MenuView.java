@@ -42,6 +42,7 @@ public class MenuView extends javax.swing.JFrame {
 
         escritorio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         escritorio.setForeground(new java.awt.Color(102, 102, 0));
+        escritorio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -51,10 +52,12 @@ public class MenuView extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 732, Short.MAX_VALUE)
         );
 
         getContentPane().add(escritorio);
+
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jMalumno.setText("Alumno");
 

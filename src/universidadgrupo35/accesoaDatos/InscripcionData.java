@@ -36,7 +36,7 @@ public class InscripcionData {
     }
  public void guardarInscripcion ( Inscripcion insc){
      
-     String sql="insert into inscripcion (idAlumno,idMateria,nota) values (?,?,?)";
+     String sql="insert into inscripcion (idAlumno,idMateria,nota,estado) values (?,?,?,?)";
      
      try {
          PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -46,6 +46,8 @@ public class InscripcionData {
          ps.setInt(2,insc.getMateria().getIdMateria());
          
          ps.setDouble(3,insc.getNota());
+         
+         ps.setBoolean(4, true);
          
          ps.executeUpdate();
          
@@ -189,7 +191,7 @@ public class InscripcionData {
      
           ArrayList<Inscripcion> cursadas= new ArrayList <> ();
      
-          String sql="SELECT * FROM inscripcion WHERE IdAlumno=?";
+          String sql="SELECT * FROM inscripcion WHERE estado =1 and IdAlumno=?";
           
           
      try {
@@ -227,7 +229,9 @@ public class InscripcionData {
      ArrayList <Materia> materias= new ArrayList();
      // sentencia para enviar
      
-     String sql= "SELECT inscripcion.idMateria,nombre, año From inscripcion, materia WHERE inscripcion.idMateria= materia.idMateria AND inscripcion.idAlumno=?;";
+     String sql= "SELECT inscripcion.idMateria,nombre, año From inscripcion, materia "
+             
+             + " WHERE inscripcion.idMateria= materia.idMateria AND inscripcion.idAlumno=? And inscripcion.estado =1;";
      //aca hace un producto cartesiano con todas las posibles combinaciones entre inscripción y materia pero que solo devuelva donde coincidan los id 
      try {
           //habilitamos conexion a bd
@@ -259,7 +263,7 @@ public class InscripcionData {
      public List <Materia>obtenerMateriasNoCursadas (int idAlumno){
        ArrayList <Materia> materias= new ArrayList();  
          String sql= "SELECT * FROM materia WHERE estado = 1 AND idmateria not in"
-                 + "(SELECT idmateria FROM inscripcion WHERE idAlumno =?)";         
+                 + "(SELECT idmateria FROM inscripcion WHERE idAlumno =? and inscripcion.estado =1)";          
          
           try {
           //habilitamos conexion a bd

@@ -35,7 +35,7 @@ public class InscripcionView extends javax.swing.JInternalFrame {
      */
     public InscripcionView() {
         initComponents();
-        modelo = new DefaultTableModel();
+        modelo = (DefaultTableModel)jTMaterias.getModel();
         listaInscripcion = new ArrayList<Inscripcion>();
         listaMateria = new ArrayList<Materia>();
         listaAlumno = new ArrayList<Alumno> ();
@@ -52,7 +52,7 @@ public class InscripcionView extends javax.swing.JInternalFrame {
         
         cargarAlumnoCombo();
         
-       armarCabeceraDeTabla();
+      // armarCabeceraDeTabla();
       
         
                 
@@ -128,6 +128,8 @@ private void cargarDatosInscriptas(){
         jBAnularInscripcion = new javax.swing.JButton();
         JBSalir = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(600, 700));
+
         jLFormularioDeInscripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLFormularioDeInscripcion.setText("Formulario de inscripcion");
 
@@ -155,15 +157,31 @@ private void cargarDatosInscriptas(){
 
         jTMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "idMateria", "Nombre", "Año"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTMaterias.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTMaterias);
 
         jBInscribir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -201,12 +219,12 @@ private void cargarDatosInscriptas(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jRBMateriasInscriptas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(128, 128, 128)
                         .addComponent(jRBMateriasNoInscriptas))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLSeleccioneAlumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +261,7 @@ private void cargarDatosInscriptas(){
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBMateriasInscriptas)
-                    .addComponent(jRBMateriasNoInscriptas))
+                    .addComponent(jRBMateriasNoInscriptas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109)

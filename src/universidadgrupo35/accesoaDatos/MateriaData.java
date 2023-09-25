@@ -60,7 +60,7 @@ public class MateriaData {
 
     public void modificarMateria(Materia materia) {
 
-        String sql = "UPDATE materia SET nombre=?, año=? "
+        String sql = "UPDATE materia SET nombre=?, año=? ,estado=? "
                 + "WHERE idMateria= ?";
 
         try {
@@ -68,6 +68,7 @@ public class MateriaData {
             //seteo valores--- son 3 parametros
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
+            ps.setBoolean(3, materia.isEstado());
             ps.setInt(3, materia.getIdMateria());
 
             ps.executeUpdate();            //devuelve int con cant filas afectadas. lo guardo en variable:
