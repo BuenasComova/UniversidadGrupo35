@@ -116,6 +116,7 @@ private void cargarDatosInscriptas(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLFormularioDeInscripcion = new javax.swing.JLabel();
         jLSeleccioneAlumno = new javax.swing.JLabel();
         jCBAlumno = new javax.swing.JComboBox<>();
@@ -139,6 +140,7 @@ private void cargarDatosInscriptas(){
         jLListadoDeMaterias.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLListadoDeMaterias.setText("Listado de materias");
 
+        buttonGroup1.add(jRBMateriasInscriptas);
         jRBMateriasInscriptas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBMateriasInscriptas.setText("Materias inscriptas");
         jRBMateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +149,7 @@ private void cargarDatosInscriptas(){
             }
         });
 
+        buttonGroup1.add(jRBMateriasNoInscriptas);
         jRBMateriasNoInscriptas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBMateriasNoInscriptas.setText("Materias no inscriptas");
         jRBMateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -342,6 +345,7 @@ if (filaSeleccionada!=-1){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBSalir;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBAnularInscripcion;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JComboBox<Alumno> jCBAlumno;
