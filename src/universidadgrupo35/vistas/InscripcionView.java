@@ -30,10 +30,7 @@ public class InscripcionView extends javax.swing.JInternalFrame {
  private MateriaData md;
  private InscripcionData id;
  
- /**
-     * Creates new form InscripcionView
-     */
-    public InscripcionView() {
+         public InscripcionView() {
         initComponents();
         modelo = (DefaultTableModel)jTMaterias.getModel();
         listaInscripcion = new ArrayList<Inscripcion>();
@@ -50,7 +47,7 @@ public class InscripcionView extends javax.swing.JInternalFrame {
         listaAlumno= (ArrayList<Alumno>) ad.listarAlumnos();
         
         
-        cargarAlumnoCombo();
+       cargarAlumnoCombo();
         
       // armarCabeceraDeTabla();
       
@@ -232,22 +229,21 @@ private void cargarDatosInscriptas(){
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jBInscribir)
-                                .addGap(114, 114, 114)
-                                .addComponent(jBAnularInscripcion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JBSalir)
-                                .addGap(8, 8, 8))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(jLListadoDeMaterias))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
-                        .addComponent(jLFormularioDeInscripcion)))
+                        .addComponent(jLFormularioDeInscripcion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBInscribir)
+                                .addGap(114, 114, 114)
+                                .addComponent(jBAnularInscripcion)
+                                .addGap(79, 79, 79)
+                                .addComponent(JBSalir)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -272,7 +268,7 @@ private void cargarDatosInscriptas(){
                     .addComponent(jBInscribir)
                     .addComponent(jBAnularInscripcion)
                     .addComponent(JBSalir))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         pack();

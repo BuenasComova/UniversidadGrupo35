@@ -71,7 +71,9 @@ public class InscripcionData {
      
      public void actualizarNota(int idAlumno, int idMateria, double nota){
          
-         String sql="update inscripcion set nota= ? where idAlumno=? and idMateria=?";
+         String sql="update inscripcion set nota= ? "+
+                 "where idAlumno= ? and idMateria= ? and inscripcion.estado = 1 ";
+         
          
      try {
          PreparedStatement ps=con.prepareStatement(sql);
@@ -103,7 +105,9 @@ public class InscripcionData {
          
          
      }
-     } // Hacemos el borrado logico
+     } 
+
+// Hacemos el borrado logico
        public void borrarInscripcionMateriaAlumno (int idAlumno,int idMateria) {
           String sql="UPDATE inscripcion SET estado=0 where idAlumno=? and idMateria=?";
            
@@ -229,10 +233,10 @@ public class InscripcionData {
      ArrayList <Materia> materias= new ArrayList();
      // sentencia para enviar
      
-     String sql= "SELECT inscripcion.idMateria,nombre, año From inscripcion, materia "
+     String sql= "SELECT inscripcion.idMateria,nombre, año, nota From inscripcion, materia "
              
-             + " WHERE inscripcion.idMateria= materia.idMateria AND inscripcion.idAlumno=? And inscripcion.estado =1;";
-     //aca hace un producto cartesiano con todas las posibles combinaciones entre inscripción y materia pero que solo devuelva donde coincidan los id 
+             + " WHERE inscripcion.idMateria= materia.idMateria AND inscripcion.idAlumno= ? And inscripcion.estado= 1 ; ";
+     //aca hace producto cartesiano con todas las posibles combinaciones entre inscripción y materia pero que solo devuelva donde coincidan los id 
      try {
           //habilitamos conexion a bd
          PreparedStatement ps=con.prepareStatement(sql);
@@ -249,6 +253,7 @@ public class InscripcionData {
             materia.setIdMateria(rs.getInt("idMateria"));
             materia.setNombre(rs.getString("nombre"));
             materia.setAnio(rs.getInt("año"));
+            materia.setNota(rs.getInt("nota"));
             materias.add(materia);
         }
         //se cierra la conexion
@@ -258,7 +263,7 @@ public class InscripcionData {
      }
      return materias;
 }
-     
+      
       //Obtengo las materias no cursadas por el alumno
      public List <Materia>obtenerMateriasNoCursadas (int idAlumno){
        ArrayList <Materia> materias= new ArrayList();  
