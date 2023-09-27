@@ -71,8 +71,8 @@ public class InscripcionData {
      
      public void actualizarNota(int idAlumno, int idMateria, double nota){
          
-         String sql="update inscripcion set nota= ? "+
-                 "where idAlumno= ? and idMateria= ? and inscripcion.estado = 1 ";
+         String sql="update inscripcion set nota=? "+
+                 "where idAlumno=? and idMateria=?  ";
          
          
      try {

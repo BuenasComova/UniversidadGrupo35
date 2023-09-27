@@ -9,6 +9,7 @@ package universidadgrupo35.vistas;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo35.accesoaDatos.AlumnoData;
 import universidadgrupo35.accesoaDatos.InscripcionData;
@@ -101,24 +102,30 @@ private void cargarDatosInscriptas(){
     Alumno a = (Alumno)jCBAlumnos.getSelectedItem();
    inscripciones = (ArrayList)id.obtenerInscripcionesPorAlumno(a.getIdAlumno());
     for (Inscripcion x : inscripciones){
-            modelo.addRow(new Object[]{x.getMateria().getIdMateria(),x.getMateria().getNombre(),x.getNota()});
+            modelo.addRow(new Object[]{x.getMateria().getIdMateria(),x.getMateria().getNombre(),x.getMateria().getAnio(),x.getNota()});
         }
     
+    
+        
+//     
 }
   private void guardarNota(){
+     
       
-      int filaseleccionada = jTMaterias.getSelectedRow();
-      
-     Alumno seleccionado = (Alumno)jCBAlumnos.getSelectedItem();
+      int filaSeleccionada = jTMaterias.getSelectedRow();
+      if(filaSeleccionada != -1){
+          
+     Alumno    a = (Alumno)jCBAlumnos.getSelectedItem();
      
-     int    a = seleccionado.getIdAlumno();
+     int    b = (Integer) modelo.getValueAt(filaSeleccionada,0);
      
-     int    b = (Integer) modelo.getValueAt(filaseleccionada,0);
+     double  c = (Integer) modelo.getValueAt(filaSeleccionada, 3);
      
-     double  c = (Integer) modelo.getValueAt(filaseleccionada, 3);
-     
-     id.actualizarNota(a,b,c);
-    
+     id.actualizarNota(a.getIdAlumno(),b,c);
+    }else {
+          JOptionPane.showMessageDialog(this, "Debe seleccionar una opción");
+      }
+//       
      borrarFilaTabla();
       
   }
@@ -285,7 +292,8 @@ private void cargarDatosInscriptas(){
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-     guardarNota();   // TODO add your handling code here:
+        // TODO add your handling code here:
+        guardarNota();
     }//GEN-LAST:event_jBGuardarActionPerformed
 
 
