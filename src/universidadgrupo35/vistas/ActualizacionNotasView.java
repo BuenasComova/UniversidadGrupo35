@@ -119,7 +119,7 @@ private void cargarDatosInscriptas(){
      
      int    b = (Integer) modelo.getValueAt(filaSeleccionada,0);
      
-     double  c = (Integer) modelo.getValueAt(filaSeleccionada, 3);
+     double  c = (Double) modelo.getValueAt(filaSeleccionada, 3);
      
      id.actualizarNota(a.getIdAlumno(),b,c);
     }else {
