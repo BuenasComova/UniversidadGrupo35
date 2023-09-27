@@ -20,7 +20,7 @@ public class MateriaView extends javax.swing.JInternalFrame {
 
     public MateriaView() {
         initComponents();
-    jRestado.setSelected(true);
+        jRestado.setSelected(true);
     }
 
     /**

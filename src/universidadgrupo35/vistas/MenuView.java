@@ -1,4 +1,3 @@
-
 package universidadgrupo35.vistas;
 
 import universidadgrupo35.accesoaDatos.AlumnoData;
@@ -8,8 +7,9 @@ import universidadgrupo35.accesoaDatos.AlumnoData;
  * @author grupo35
  */
 public class MenuView extends javax.swing.JFrame {
+
     private AlumnoData ad;
-    
+
     public MenuView() {
         initComponents();
         ad = new AlumnoData(); // instancio ad
@@ -139,59 +139,64 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMaluPorMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaluPorMatActionPerformed
-        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnosPorMateriaView apmv = new AlumnosPorMateriaView();
+        apmv.setVisible(true);
+        escritorio.add(apmv);
+        escritorio.moveToFront(apmv);
     }//GEN-LAST:event_jMaluPorMatActionPerformed
 
     private void jMcalificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcalificacionesActionPerformed
-      escritorio.removeAll();
-      escritorio.repaint();
-      ActualizacionNotasView anv = new ActualizacionNotasView();
-     anv.setVisible(true);
-      escritorio.add(anv);
-      escritorio.moveToFront(anv);
-      
+        escritorio.removeAll();
+        escritorio.repaint();
+        ActualizacionNotasView anv = new ActualizacionNotasView();
+        anv.setVisible(true);
+        escritorio.add(anv);
+        escritorio.moveToFront(anv);
+
     }//GEN-LAST:event_jMcalificacionesActionPerformed
 
     private void jMformAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformAlumnoActionPerformed
-       escritorio.removeAll();
-       escritorio.repaint();
-       AlumnoView avw = new AlumnoView(ad); // instancio objeto de clase AlumnoView
-       avw.setVisible(true);
-       escritorio.add(avw);
-       escritorio.moveToFront(avw);
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnoView avw = new AlumnoView(ad); // instancio objeto de clase AlumnoView
+        avw.setVisible(true);
+        escritorio.add(avw);
+        escritorio.moveToFront(avw);
     }//GEN-LAST:event_jMformAlumnoActionPerformed
 
     private void jMmateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMmateriaActionPerformed
-     escritorio.removeAll();
-     escritorio.repaint();
-     ActualizacionNotasView avw = new ActualizacionNotasView(ad);
-     avw.setVisible(true);
-     escritorio.add(avw);
-     escritorio.moveToFront(avw);
+        escritorio.removeAll();
+        escritorio.repaint();
+        MateriaView mvw = new MateriaView();
+        mvw.setVisible(true);
+        escritorio.add(mvw);
+        escritorio.moveToFront(mvw);
     }//GEN-LAST:event_jMmateriaActionPerformed
 
     private void jMformMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformMateriaActionPerformed
-    escritorio.removeAll();
-       escritorio.repaint();
-       MateriaView mvw = new MateriaView(); // instancio objeto de clase AlumnoView
-       mvw.setVisible(true);
-       escritorio.add(mvw);
-       escritorio.moveToFront(mvw);        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        MateriaView mvw = new MateriaView();
+        mvw.setVisible(true);
+        escritorio.add(mvw);
+        escritorio.moveToFront(mvw);        // TODO add your handling code here:
     }//GEN-LAST:event_jMformMateriaActionPerformed
 
     private void jMformInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformInscripcionActionPerformed
-escritorio.removeAll(); 
-escritorio.repaint();
-InscripcionView ivw =
-        new InscripcionView();
-ivw.setVisible(true);
-escritorio.add(ivw);
-    
-  //tODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        InscripcionView ivw
+                = new InscripcionView();
+        ivw.setVisible(true);
+        escritorio.add(ivw);
+
+        //tODO add your handling code here:
     }//GEN-LAST:event_jMformInscripcionActionPerformed
 
     private void jMsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMsalirMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMsalirMouseClicked
 
     private void jMadministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMadministracionActionPerformed

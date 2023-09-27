@@ -13,28 +13,24 @@ import universidadgrupo35.accesoaDatos.MateriaData;
 import universidadgrupo35.entidades.Alumno;
 import universidadgrupo35.entidades.Materia;
 
-
-
 /**
  *
  * @author usuario
  */
 public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
 
-    private ArrayList<Materia>listaM;
-    private ArrayList<Alumno>listaA;
-    private AlumnoData ad; 
+    private ArrayList<Materia> listaM;
+    private ArrayList<Alumno> listaA;
+    private AlumnoData ad;
     private MateriaData md;
-    
+
     private InscripcionData inscd;
     private DefaultTableModel modelo;
-   
-    
-    
+
     public AlumnosPorMateriaView() {
         initComponents();
         modelo = new DefaultTableModel();
-        ad = new AlumnoData(); 
+        ad = new AlumnoData();
         md = new MateriaData();
         inscd = new InscripcionData();
         listaA = (ArrayList<Alumno>) ad.listarAlumnos();
@@ -131,7 +127,7 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCmateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCmateriaActionPerformed
-       cargarAlumnosPorMateria();
+        cargarAlumnosPorMateria();
     }//GEN-LAST:event_jCmateriaActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
@@ -148,65 +144,51 @@ public class AlumnosPorMateriaView extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTalumnos;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    
-    
-    
-    
-    private void armarCabeceraTabla(){
-        
-        ArrayList<Object> filaCabecera=new ArrayList<>();
+    private void armarCabeceraTabla() {
+
+        ArrayList<Object> filaCabecera = new ArrayList<>();
         //nombres columnas
         filaCabecera.add("id");
         filaCabecera.add("dni");
         filaCabecera.add("apellido");
         filaCabecera.add("nombre");
-        
+
         for (Object object : filaCabecera) {
-            
-            modelo.addColumn(object);   
+
+            modelo.addColumn(object);
         }
-    
+
         jTalumnos.setModel(modelo); //seteo campos a la tabla
-    
-    
+
     }
-    
-    private void cargarMaterias(){
-       
+
+    private void cargarMaterias() {
+
         for (Materia materia : listaM) {  //propiedades - code - type parameters
-            
+
             jCmateria.addItem(materia);
-            
+
         }
     }
-    
-    
-    private void borrarFilasTabla(){
-        
-        int indice= modelo.getRowCount()-1; //cuenta las filas desde la ultima
-            for (int i = indice; i >=0; i--) {  //itera desde indice, recorre descendente
-                modelo.removeRow(i);            //borra filas que tengan ese indice
+
+    private void borrarFilasTabla() {
+
+        int indice = modelo.getRowCount() - 1; //cuenta las filas desde la ultima
+        for (int i = indice; i >= 0; i--) {  //itera desde indice, recorre descendente
+            modelo.removeRow(i);            //borra filas que tengan ese indice
         }
     }
-    
-    private void cargarAlumnosPorMateria(){
-            
+
+    private void cargarAlumnosPorMateria() {
+
         borrarFilasTabla();
-        Materia mat= (Materia) jCmateria.getSelectedItem(); //castea a Materia
-        listaA= (ArrayList<Alumno>) inscd.obtenerAlumnoPorMateria(mat.getIdMateria()); //  se castea a ArrayList
-            for (Alumno a: listaA) {
-                modelo.addRow(new Object[]{a.getIdAlumno(),a.getDni(), a.getApellido(),a.getNombre()});
-            
+        Materia mat = (Materia) jCmateria.getSelectedItem(); //castea a Materia
+        listaA = (ArrayList<Alumno>) inscd.obtenerAlumnoPorMateria(mat.getIdMateria()); //  se castea a ArrayList
+        for (Alumno a : listaA) {
+            modelo.addRow(new Object[]{a.getIdAlumno(), a.getDni(), a.getApellido(), a.getNombre()});
+
         }
-    
-   
+
     }
 
 }
-
-
-
-
-

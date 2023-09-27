@@ -5,7 +5,6 @@
  */
 package universidadgrupo35.vistas;
 
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
@@ -17,19 +16,16 @@ import universidadgrupo35.entidades.Alumno;
  * @author usuario
  */
 public class AlumnoView extends javax.swing.JInternalFrame {
-    
+
     private AlumnoData ad;
     private Alumno alumnoActual;
-    
+
     public AlumnoView(AlumnoData ad) {
         initComponents();
-         this.ad = ad;
-         //setBounds(WIDTH, WIDTH, WIDTH, WIDTH);
+        this.ad = ad;
+        //setBounds(WIDTH, WIDTH, WIDTH, WIDTH);
     }
 
-
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -215,82 +211,77 @@ public class AlumnoView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        
-        try{
-        Integer dni= Integer.parseInt(jTdni.getText()); 
-             alumnoActual = ad.buscarAlumnoPorDni(dni);
-        
-        if(alumnoActual!=null){
-        
-        
-       jTapellido.setText(alumnoActual.getApellido());
-       jTnombre.setText(alumnoActual.getNombre());
-       jRestado.setSelected(alumnoActual.isEstado());
-            LocalDate lc=alumnoActual.getFechaNacimiento();
-            java.util.Date date=java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            //toda esta linea genera un instant                        
-            jDfechaNac.setDate(date);
-      
-        }        
-        } catch(NumberFormatException e){
-             JOptionPane.showMessageDialog(this, "Ingrese numeros válidos");
-        }       
-     
+
+        try {
+            Integer dni = Integer.parseInt(jTdni.getText());
+            alumnoActual = ad.buscarAlumnoPorDni(dni);
+
+            if (alumnoActual != null) {
+
+                jTapellido.setText(alumnoActual.getApellido());
+                jTnombre.setText(alumnoActual.getNombre());
+                jRestado.setSelected(alumnoActual.isEstado());
+                LocalDate lc = alumnoActual.getFechaNacimiento();
+                java.util.Date date = java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                //toda esta linea genera un instant                        
+                jDfechaNac.setDate(date);
+
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese numeros válidos");
+        }
+
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        
-        try{
-         Integer dni= Integer.parseInt(jTdni.getText()); 
-         String apellido =  jTapellido.getText();       
-         String nombre = jTnombre.getText();
-         
-            if(nombre.isEmpty()|| apellido.isEmpty()){
-         JOptionPane.showMessageDialog(this, "Debe completar los campos");
-         return;
-        
-        }
-         java.util.Date sfecha= jDfechaNac.getDate(); //creo variable sfecha de Date. Despues transformo a LocalDate
-         LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         Boolean estado = jRestado.isSelected();
-            if (alumnoActual==null) { //evaluar: si es nuevo y lo creo:
-                
-                alumnoActual= new Alumno(dni,apellido, nombre, fechaNac,estado);
+
+        try {
+            Integer dni = Integer.parseInt(jTdni.getText());
+            String apellido = jTapellido.getText();
+            String nombre = jTnombre.getText();
+
+            if (nombre.isEmpty() || apellido.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe completar los campos");
+                return;
+
+            }
+            java.util.Date sfecha = jDfechaNac.getDate(); //creo variable sfecha de Date. Despues transformo a LocalDate
+            LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Boolean estado = jRestado.isSelected();
+            if (alumnoActual == null) { //evaluar: si es nuevo y lo creo:
+
+                alumnoActual = new Alumno(dni, apellido, nombre, fechaNac, estado);
                 ad.guardarAlumno(alumnoActual);
-             
+
                 // si no esta en nulo el usuario lo busco y modifico datos:  
             } else {
-                
-                 alumnoActual.setDni(dni);
-                 alumnoActual.setApellido(apellido);
-                 alumnoActual.setNombre(nombre);
-                 alumnoActual.setFechaNacimiento(fechaNac); //estado va a usarse para eliminar
-                 ad.modificarAlumno(alumnoActual);
+
+                alumnoActual.setDni(dni);
+                alumnoActual.setApellido(apellido);
+                alumnoActual.setNombre(nombre);
+                alumnoActual.setFechaNacimiento(fechaNac); //estado va a usarse para eliminar
+                ad.modificarAlumno(alumnoActual);
             }
-         
-         
-         
-         
-         
-        }catch (NumberFormatException e){
-             JOptionPane.showMessageDialog(this, "Ingrese numero válido de DNI");
-        
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese numero válido de DNI");
+
         }
 
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
-       if (alumnoActual!=null){
-           
-           ad.eliminarAlumno(alumnoActual.getIdAlumno());
-           alumnoActual=null;
-           limpiarCampos();
-       }else{
-       
-           JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno");
-       
-       }
-        
+        if (alumnoActual != null) {
+
+            ad.eliminarAlumno(alumnoActual.getIdAlumno());
+            alumnoActual = null;
+            limpiarCampos();
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un alumno");
+
+        }
+
 
     }//GEN-LAST:event_jBeliminarActionPerformed
 
@@ -299,26 +290,24 @@ public class AlumnoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRestadoActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-          dispose();
+        dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-       limpiarCampos();
-        Alumno alumnoActual= new Alumno();
+        limpiarCampos();
+        Alumno alumnoActual = new Alumno();
         alumnoActual = null;
     }//GEN-LAST:event_jBnuevoActionPerformed
-    
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         jTdni.setText("");
         jTapellido.setText("");
         jTnombre.setText("");
         jRestado.setSelected(true);
         jDfechaNac.setDate(null);   //null o new Date()?
-    
-    
-    
+
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
@@ -343,5 +332,3 @@ public class AlumnoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
 }
-
-

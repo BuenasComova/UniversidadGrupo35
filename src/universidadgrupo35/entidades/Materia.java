@@ -5,12 +5,9 @@
  */
 package universidadgrupo35.entidades;
 
-/**
- *
- * @author Hp
- */
+
 public class Materia {
-  
+
     private int idMateria;
     private String nombre;
     private int anio;
@@ -68,10 +65,5 @@ public class Materia {
     public String toString() {
         return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", año=" + anio + '}';
     }
-    
-   
 
-    
-    }
-    
-
+}

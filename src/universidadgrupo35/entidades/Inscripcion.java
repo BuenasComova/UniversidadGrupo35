@@ -10,6 +10,7 @@ package universidadgrupo35.entidades;
  * @author Hp
  */
 public class Inscripcion {
+
     private int idInscripcion;
     private Alumno alumno;
     private Materia materia;
@@ -23,15 +24,15 @@ public class Inscripcion {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
-        this.estado= estado;
+        this.estado = estado;
     }
 
-    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota,boolean estado) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota, boolean estado) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
-        this.estado= estado;
+        this.estado = estado;
     }
 
     public int getIdInscripcion() {
@@ -73,15 +74,13 @@ public class Inscripcion {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    
-    
 
     @Override
     public String toString() {
-        String insc = idInscripcion+" "+alumno.getApellido()+", "+alumno.getNombre()+", "+materia.getNombre();
+
+        String insc = idInscripcion + " " + alumno.getApellido() + ", " + alumno.getNombre() + ", " + materia.getNombre();
+
         return insc;
     }
-    
-//   cohete;
-           
+
 }

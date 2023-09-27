@@ -1,35 +1,34 @@
-
 package universidadgrupo35.entidades;
 
 import java.time.LocalDate;
 
-
 public class Alumno {
- private int idAlumno;
- private int dni;
- private String apellido;
- private String nombre;
- private LocalDate fechaNacimiento;
- private boolean estado;
+
+    private int idAlumno;
+    private int dni;
+    private String apellido;
+    private String nombre;
+    private LocalDate fechaNacimiento;
+    private boolean estado;
 
     public Alumno() {
     }
 
     public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
-        this.dni= dni;
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
     }
 
-    public Alumno(int idAlumno, int dni,String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
         this.idAlumno = idAlumno;
-         this.dni= dni;
+        this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.estado =estado;
+        this.estado = estado;
     }
 
     public int getIdAlumno() {
@@ -48,8 +47,6 @@ public class Alumno {
         this.dni = dni;
     }
 
-    
-    
     public String getApellido() {
         return apellido;
     }
@@ -84,14 +81,12 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return  " idAlumno=" +", "+ idAlumno + ", "+ apellido + ", "+ nombre ;
-        
+        return " idAlumno=" + ", " + idAlumno + ", " + apellido + ", " + nombre;
+
     }
 
     public boolean getFechaNac() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
- 
- 
- 
+
 }

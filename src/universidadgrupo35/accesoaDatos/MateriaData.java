@@ -122,8 +122,7 @@ public class MateriaData {
 
                 mat.setIdMateria(idMateria);
                 mat.setNombre(rs.getString("nombre"));
-               
-               
+
                 mat.setAnio(rs.getInt("año"));
                 mat.setEstado(true);
             } else {
@@ -142,9 +141,6 @@ public class MateriaData {
 
     }
 
-    
-
-      
     public List<Materia> listarMaterias() {
         List<Materia> materias = new ArrayList<>();
 
@@ -161,9 +157,9 @@ public class MateriaData {
                 mat = new Materia();
 
                 mat.setIdMateria(rs.getInt("idMateria"));
-                
+
                 mat.setNombre(rs.getString("nombre"));
-               
+
                 mat.setAnio(rs.getInt("año"));
                 mat.setEstado(true);
                 materias.add(mat);
@@ -180,4 +176,3 @@ public class MateriaData {
 
     }
 }
-

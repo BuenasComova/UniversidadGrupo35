@@ -5,8 +5,6 @@ package universidadgrupo35.vistas;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -25,112 +23,104 @@ import universidadgrupo35.entidades.Materia;
 public class ActualizacionNotasView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
-    
+
     private AlumnoData ad;
-   
-   //private MateriaData md;
-   
-   private InscripcionData id;
-   
-  // private int nota ;
-   
-   private ArrayList <Alumno> ListaAlumno;
-   
-   private ArrayList <Inscripcion> inscripciones;
-   private Inscripcion x;
-   
-     /* Creates new form ActualizacionNotasView
+
+    //private MateriaData md;
+    private InscripcionData id;
+
+    // private int nota ;
+    private ArrayList<Alumno> ListaAlumno;
+
+    private ArrayList<Inscripcion> inscripciones;
+    private Inscripcion x;
+
+    /* Creates new form ActualizacionNotasView
      */
     public ActualizacionNotasView() {
         initComponents();
-        
-    modelo = new DefaultTableModel();
-    ad =new AlumnoData();
-    //md= new MateriaData ();
-    id= new InscripcionData();
-    x= new Inscripcion();
-    ListaAlumno = (ArrayList<Alumno>)ad.listarAlumnos();
-    
-    inscripciones = ( ArrayList<Inscripcion>) id.obtenerInscripciones();
-     Alumno a = new Alumno();
-    Materia m = new Materia();
-    
+
+        modelo = new DefaultTableModel();
+        ad = new AlumnoData();
+        //md= new MateriaData ();
+        id = new InscripcionData();
+        x = new Inscripcion();
+        ListaAlumno = (ArrayList<Alumno>) ad.listarAlumnos();
+
+        inscripciones = (ArrayList<Inscripcion>) id.obtenerInscripciones();
+        Alumno a = new Alumno();
+        Materia m = new Materia();
+
 //    
-    cargarAlumnoCombo();
-    armarCabeceraDeTabla();
+        cargarAlumnoCombo();
+        armarCabeceraDeTabla();
     }
 
-    ActualizacionNotasView(AlumnoData ad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
-     
-   public void cargarAlumnoCombo(){
-    
-   for (Alumno a: ListaAlumno ){
-       
-       jCBAlumnos.addItem (a);
-   } 
-   }
-    public void armarCabeceraDeTabla(){ 
-       
-       ArrayList<Object> columnas = new ArrayList<>();
-       columnas.add("ID");
-       columnas.add("Nombre");
-       columnas.add("Año");
-       columnas.add("Nota");
-       
-       for(Object it:columnas){
-           
-           modelo.addColumn(it);
-       }
-       
-       jTMaterias.setModel(modelo);
-       
-       }
-  
-    public void borrarFilaTabla(){
-    int a =modelo.getRowCount()-1;
-    for(int i=a;i>=0;i--){
-        modelo.removeRow(i);}
-    }
- 
-   
-private void cargarDatosInscriptas(){
 
-    borrarFilaTabla();
-    Alumno a = (Alumno)jCBAlumnos.getSelectedItem();
-   inscripciones = (ArrayList)id.obtenerInscripcionesPorAlumno(a.getIdAlumno());
-    for (Inscripcion x : inscripciones){
-            modelo.addRow(new Object[]{x.getMateria().getIdMateria(),x.getMateria().getNombre(),x.getMateria().getAnio(),x.getNota()});
+    public void cargarAlumnoCombo() {
+
+        for (Alumno a : ListaAlumno) {
+
+            jCBAlumnos.addItem(a);
         }
-    
-    
-        
+    }
+
+    public void armarCabeceraDeTabla() {
+
+        ArrayList<Object> columnas = new ArrayList<>();
+        columnas.add("ID");
+        columnas.add("Nombre");
+        columnas.add("Año");
+        columnas.add("Nota");
+
+        for (Object it : columnas) {
+
+            modelo.addColumn(it);
+        }
+
+        jTMaterias.setModel(modelo);
+
+    }
+
+    public void borrarFilaTabla() {
+        int a = modelo.getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+    }
+
+    private void cargarDatosInscriptas() {
+
+        borrarFilaTabla();
+        Alumno a = (Alumno) jCBAlumnos.getSelectedItem();
+        inscripciones = (ArrayList) id.obtenerInscripcionesPorAlumno(a.getIdAlumno());
+        for (Inscripcion x : inscripciones) {
+            modelo.addRow(new Object[]{x.getMateria().getIdMateria(), x.getMateria().getNombre(), x.getMateria().getAnio(), x.getNota()});
+        }
+
 //     
-}
-  private void guardarNota(){
-     
-      
-      int filaSeleccionada = jTMaterias.getSelectedRow();
-      if(filaSeleccionada != -1){
-          
-     Alumno    a = (Alumno)jCBAlumnos.getSelectedItem();
-     
-     int    b = (Integer) modelo.getValueAt(filaSeleccionada,0);
-     
-     double  c = (Double) modelo.getValueAt(filaSeleccionada, 3);
-     
-     id.actualizarNota(a.getIdAlumno(),b,c);
-    }else {
-          JOptionPane.showMessageDialog(this, "Debe seleccionar una opción");
-      }
+    }
+
+    private void guardarNota() {
+
+        int filaSeleccionada = jTMaterias.getSelectedRow();
+        if (filaSeleccionada != -1) {
+
+            Alumno a = (Alumno) jCBAlumnos.getSelectedItem();
+
+            int b = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+
+            double c = (Double) modelo.getValueAt(filaSeleccionada, 3);
+
+            id.actualizarNota(a.getIdAlumno(), b, c);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una opción");
+        }
 //       
-     borrarFilaTabla();
-      
-  }
-            
-    
+        borrarFilaTabla();
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,15 +270,15 @@ private void cargarDatosInscriptas(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-  dispose();
+        dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCBAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnosActionPerformed
-      cargarDatosInscriptas();  // TODO add your handling code here:
+        cargarDatosInscriptas();  // TODO add your handling code here:
     }//GEN-LAST:event_jCBAlumnosActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-     borrarFilaTabla();   // TODO add your handling code here:
+        borrarFilaTabla();   // TODO add your handling code here:
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
