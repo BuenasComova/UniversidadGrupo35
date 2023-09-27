@@ -20,7 +20,7 @@ public class MateriaView extends javax.swing.JInternalFrame {
 
     public MateriaView() {
         initComponents();
-
+    jRestado.setSelected(true);
     }
 
     /**
@@ -184,27 +184,27 @@ public class MateriaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBnuevaActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
- try {
+        try {
 
             String nombre = jTnombre.getText();
             int anio = Integer.parseInt(jTanio.getText());
-       if (nombre.isEmpty()||anio<1){
-           JOptionPane.showMessageDialog(this,"no puede haber campos vacíos");
-           return;
-       }
-     boolean estado = jRestado.isSelected();
-     
-          if (materiaActual==null){
-materiaActual= new Materia(nombre,anio,estado);
-            md.guardarMateria(materiaActual);
-            
-          } else {
-              materiaActual.setNombre(nombre);
-              materiaActual.setAnio(anio);
-              materiaActual.isEstado();
-              md.modificarMateria(materiaActual);
-              
-          }
+            if (nombre.isEmpty() || anio < 1) {
+                JOptionPane.showMessageDialog(this, "no puede haber campos vacíos");
+                return;
+            }
+            boolean estado = jRestado.isSelected();
+
+            if (materiaActual == null) {
+                materiaActual = new Materia(nombre, anio, estado);
+                md.guardarMateria(materiaActual);
+
+            } else {
+                materiaActual.setNombre(nombre);
+                materiaActual.setAnio(anio);
+                materiaActual.isEstado();
+                md.modificarMateria(materiaActual);
+
+            }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Se ha ingresado un dato incorrecto, intente nuevamente");
@@ -212,7 +212,7 @@ materiaActual= new Materia(nombre,anio,estado);
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
- try {
+        try {
             int codigo = Integer.parseInt(jTcodigo.getText());
             materiaActual = md.buscarMateria(codigo);
             if (materiaActual != null) {
@@ -228,19 +228,19 @@ materiaActual= new Materia(nombre,anio,estado);
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
- if (null==materiaActual){
-           JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado");
-       } else {
-           md.eliminarMateria(materiaActual.getIdMateria());
-           materiaActual=null;
-           limpiarCampos();
-           
-       }
-               // TODO add your handling code here:
+        if (null == materiaActual) {
+            JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado");
+        } else {
+            md.eliminarMateria(materiaActual.getIdMateria());
+            materiaActual = null;
+            limpiarCampos();
+
+        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-   dispose();        // TODO add your handling code here:
+        dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBsalirActionPerformed
 
 
