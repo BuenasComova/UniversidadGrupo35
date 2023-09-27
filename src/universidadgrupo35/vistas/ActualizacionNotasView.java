@@ -23,35 +23,36 @@ import universidadgrupo35.entidades.Materia;
  */
 public class ActualizacionNotasView extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel Modelo;
+    private DefaultTableModel modelo;
     
-
     private AlumnoData ad;
    
-   private MateriaData md;
+   //private MateriaData md;
    
    private InscripcionData id;
    
-   private int nota ;
+  // private int nota ;
    
    private ArrayList <Alumno> ListaAlumno;
    
-   private ArrayList <Materia> ListaMateriasCursadas;
+   private ArrayList <Inscripcion> inscripciones;
+   private Inscripcion x;
    
      /* Creates new form ActualizacionNotasView
      */
     public ActualizacionNotasView() {
         initComponents();
         
-    Modelo = new DefaultTableModel();
+    modelo = new DefaultTableModel();
     ad =new AlumnoData();
-    md= new MateriaData ();
+    //md= new MateriaData ();
     id= new InscripcionData();
-    
+    x= new Inscripcion();
     ListaAlumno = (ArrayList<Alumno>)ad.listarAlumnos();
     
-    ListaMateriasCursadas = ( ArrayList<Materia>) md.listarMaterias();
-    
+    inscripciones = ( ArrayList<Inscripcion>) id.obtenerInscripciones();
+     Alumno a = new Alumno();
+    Materia m = new Materia();
     
 //    
     cargarAlumnoCombo();
@@ -80,28 +81,28 @@ public class ActualizacionNotasView extends javax.swing.JInternalFrame {
        
        for(Object it:columnas){
            
-           Modelo.addColumn(it);
+           modelo.addColumn(it);
        }
        
-       jTMaterias.setModel(Modelo);
+       jTMaterias.setModel(modelo);
        
        }
   
     public void borrarFilaTabla(){
-    int a =Modelo.getRowCount()-1;
+    int a =modelo.getRowCount()-1;
     for(int i=a;i>=0;i--){
-        Modelo.removeRow(i);}
+        modelo.removeRow(i);}
     }
  
    
 private void cargarDatosInscriptas(){
 
     borrarFilaTabla();
-    Alumno select = (Alumno)jCBAlumnos.getSelectedItem();
-    List<Materia> lista = id.obtenerMateriasCursadas(select.getIdAlumno());
-    for (Materia m: lista){
-        Modelo.addRow(new Object[]{ m.getIdMateria(),m.getNombre(),m.getAnio(),m.getNota()});
-    }
+    Alumno a = (Alumno)jCBAlumnos.getSelectedItem();
+   inscripciones = (ArrayList)id.obtenerInscripcionesPorAlumno(a.getIdAlumno());
+    for (Inscripcion x : inscripciones){
+            modelo.addRow(new Object[]{x.getMateria().getIdMateria(),x.getMateria().getNombre(),x.getNota()});
+        }
     
 }
   private void guardarNota(){
@@ -112,9 +113,9 @@ private void cargarDatosInscriptas(){
      
      int    a = seleccionado.getIdAlumno();
      
-     int    b = (Integer) Modelo.getValueAt(filaseleccionada,0);
+     int    b = (Integer) modelo.getValueAt(filaseleccionada,0);
      
-     double  c = (Integer) Modelo.getValueAt(filaseleccionada, 3);
+     double  c = (Integer) modelo.getValueAt(filaseleccionada, 3);
      
      id.actualizarNota(a,b,c);
     

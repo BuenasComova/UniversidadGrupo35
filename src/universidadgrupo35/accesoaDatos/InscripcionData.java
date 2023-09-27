@@ -195,7 +195,7 @@ public class InscripcionData {
      
           ArrayList<Inscripcion> cursadas= new ArrayList <> ();
      
-          String sql="SELECT * FROM inscripcion WHERE estado =1 and IdAlumno=?";
+          String sql="SELECT * FROM inscripcion WHERE estado=1 and IdAlumno=?";
           
           
      try {
@@ -253,7 +253,7 @@ public class InscripcionData {
             materia.setIdMateria(rs.getInt("idMateria"));
             materia.setNombre(rs.getString("nombre"));
             materia.setAnio(rs.getInt("año"));
-            materia.setNota(rs.getInt("nota"));
+         
             materias.add(materia);
         }
         //se cierra la conexion
