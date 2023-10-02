@@ -159,8 +159,8 @@ public class InscripcionData {
                 insc.setMateria(mat);
 
                 insc.setNota(rs.getDouble("nota"));
-
-                insc.setEstado(rs.getBoolean("estado"));
+               
+        insc.setEstado(rs.getBoolean("estado"));
 
                 cursadas.add(insc);
 

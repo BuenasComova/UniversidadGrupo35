@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo35.vistas;
 
 import java.time.LocalDate;
@@ -11,10 +7,7 @@ import javax.swing.JOptionPane;
 import universidadgrupo35.accesoaDatos.AlumnoData;
 import universidadgrupo35.entidades.Alumno;
 
-/**
- *
- * @author usuario
- */
+
 public class AlumnoView extends javax.swing.JInternalFrame {
 
     private AlumnoData ad;
@@ -23,7 +16,6 @@ public class AlumnoView extends javax.swing.JInternalFrame {
     public AlumnoView(AlumnoData ad) {
         initComponents();
         this.ad = ad;
-        //setBounds(WIDTH, WIDTH, WIDTH, WIDTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -250,8 +242,8 @@ public class AlumnoView extends javax.swing.JInternalFrame {
             Boolean estado = jRestado.isSelected();
             if (alumnoActual == null) { //evaluar: si es nuevo y lo creo:
 
-                alumnoActual = new Alumno(dni, apellido, nombre, fechaNac, estado);
-                ad.guardarAlumno(alumnoActual);
+             alumnoActual = new Alumno(dni, apellido, nombre, fechaNac, estado);
+             ad.guardarAlumno(alumnoActual);
 
                 // si no esta en nulo el usuario lo busco y modifico datos:  
             } else {
